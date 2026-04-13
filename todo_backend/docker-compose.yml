@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: todo_db
+    restart: always     #If container crashes -> auto restart
+
+    # take cred from .env file 
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+
+    # Stores database data, without it--  Data will be lost when container stops
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: todo_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    # live sync - it maps Your local code -> container
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+    # # Ensures: DB starts before Django
+    depends_on:
+      - db
+
+    # Loads environment variables
+    env_file:
+      - .env
+# stores data so that data is not lost even if container is deleted
+volumes:
+  postgres_data:

@@ -1,0 +1,16 @@
+# Python
+myvenv/
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+
+# Node
+todo_frontend/node_modules/
+todo_frontend/build/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
