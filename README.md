@@ -1,6 +1,6 @@
 # 📝 Todo App (Django + React.js + PostgreSQL)
 
-A full-stack Todo application built using **Django REST Framework** (backend) and **React.js** (frontend), with **PostgreSQL** as the database.
+A full-stack Todo application built using **Django REST Framework** (backend) and **React.js** (frontend), with **PostgreSQL** as the database. The project is fully containerized using Docker for easy setup and deployment.
 
 ---
 
@@ -27,4 +27,6 @@ A full-stack Todo application built using **Django REST Framework** (backend) an
 - Django REST Framework
 - PostgreSQL
 
+### DevOps / Tools
+- Docker (containerized application) 
 
